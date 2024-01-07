@@ -1,0 +1,19 @@
+import React, { Component } from 'react'
+
+export default class Quotes extends Component {
+  render() {
+    return (
+        <div className="card my-2" style={{width: "25rem", height: "55rem"}}>
+            <img src={this.props.imageUrl} className="card-img-top" alt="..." />
+            <div className="card-body">
+                <h5 className="card-title">{this.props.title}</h5>
+                <p className="card-text">{this.props.description.length === 200 ? this.props.description + "...." :  this.props.description}</p>
+           
+            </div>
+            <div className='d-flex justify-content-center my-2'>
+                <a href="/" className="btn btn-warning  col-5">Movie Details</a>
+            </div>
+        </div>
+    )
+  }
+}
