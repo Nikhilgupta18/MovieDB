@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import {Link} from "react-router-dom";
 
 export default class Quotes extends Component {
+    // handleMovieDetail = async ()=>{
+        
+    // }
   render() {
     return (
-        <div className="card my-2" style={{width: "25rem", height: "55rem"}}>
+        <div className="card my-2" style={{width: "20rem", height: "50rem"}}>
             <img src={this.props.imageUrl} className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{this.props.title}</h5>
@@ -11,7 +15,7 @@ export default class Quotes extends Component {
            
             </div>
             <div className='d-flex justify-content-center my-2'>
-                <a href="/" className="btn btn-warning  col-5">Movie Details</a>
+                <Link to={`/movieDetail/${this.props.movieId}`} className="btn btn-warning  col-5" >Movie Details</Link>
             </div>
         </div>
     )
