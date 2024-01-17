@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Quotes from './Quotes';
+import Loading from './Loading';
 
 export default class HomePage extends Component {
     
@@ -10,19 +11,22 @@ export default class HomePage extends Component {
         super();
         this.state = {
             trendingMovies: this.movies,
-            page: 1
+            page: 1,
+            loading: false
         }
         console.log("hello world");
     }
 
     async componentDidMount(){
         let data = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', this.props.options);
+        this.setState({loading: true});
         let parseData  = await data.json();
         console.log(parseData);
 
         this.setState({
             trendingMovies: parseData.results,
-            page: this.state.page
+            page: this.state.page,
+            loading: false
                     
         });
                     
@@ -30,10 +34,11 @@ export default class HomePage extends Component {
     handlePrevClick = async ()=>{
         let data = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${this.state.page - 1}`, this.options);
         let parseData  = await data.json();
-        
+        this.setState({loading: true});
         this.setState({
             trendingMovies: parseData.results,
             page: this.state.page - 1,
+            loading: false
         })
         console.log(this.state.page);
         
@@ -42,12 +47,13 @@ export default class HomePage extends Component {
     handleNextClick = async ()=>{
         console.log(this.state.page);
         let data = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${this.state.page + 1}`, this.options);
+        this.setState({loading: true});
         let parseData  = await data.json();
         this.setState({
             trendingMovies: parseData.results,
             page: this.state.page + 1,
+            loading: false
         })
-        console.log(this.state.page);
         console.log(data, parseData,this.state.trendingMovies);
 
     }
@@ -55,8 +61,9 @@ export default class HomePage extends Component {
     return (
         <div className='container my-5'>
             <div>Latest Movies</div>
+            {this.state.loading && <Loading />}
             <div className='row'>
-                {this.state.trendingMovies.map((element)=>{
+                {!this.state.loading && this.state.trendingMovies.map((element)=>{
                     return <div key={element.id} className='col-3'>
                                 <Quotes title={element.title} description={element.overview.slice(0, 200)} imageUrl={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} movieId={element.id}/>
                             </div>

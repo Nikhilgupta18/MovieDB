@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Loading from './Loading';
 
 
 export default class MovieDetail extends Component {
@@ -8,7 +9,8 @@ export default class MovieDetail extends Component {
         console.log("movie details");
         this.state = {
             movieId: 1,
-            movieDetail: []
+            movieDetail: [],
+            loading: false
         }
         
     }
@@ -18,15 +20,21 @@ export default class MovieDetail extends Component {
         console.log();   
         
         let data = await fetch(`https://api.themoviedb.org/3/movie/${movieDetailsUrls[movieDetailsUrls.length - 1]}?language=en-US&page=1`, this.props.options);
+        this.setState({loading: true})
         let parseData  = await data.json();
-        console.log(parseData);
+        console.log(this.state.loading);
         this.setState({
             movieId : movieDetailsUrls[movieDetailsUrls.length - 1],
-            movieDetail: parseData
+            movieDetail: parseData,
+            loading: false
         });
+        console.log(this.state.loading);
 
      }
   render() {
+    if(this.state.loading){
+        <Loading />
+    }
     return (
       <div className='container d-flex justify-content-center bg-dark text-white my-5'>
         <div className='my-5 d-flex justify-content-center'>
