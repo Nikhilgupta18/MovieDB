@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Nikhilgupta18/MovieDB/static/css/main.f855e6bc.css",
+    "main.js": "/Nikhilgupta18/MovieDB/static/js/main.5a64a082.js",
+    "static/js/787.6abcf846.chunk.js": "/Nikhilgupta18/MovieDB/static/js/787.6abcf846.chunk.js",
+    "static/media/XOsX.gif": "/Nikhilgupta18/MovieDB/static/media/XOsX.3fb26d9b3c3c823ae786.gif",
+    "index.html": "/Nikhilgupta18/MovieDB/index.html",
+    "main.f855e6bc.css.map": "/Nikhilgupta18/MovieDB/static/css/main.f855e6bc.css.map",
+    "main.5a64a082.js.map": "/Nikhilgupta18/MovieDB/static/js/main.5a64a082.js.map",
+    "787.6abcf846.chunk.js.map": "/Nikhilgupta18/MovieDB/static/js/787.6abcf846.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.5a64a082.js"
+  ]
+}
