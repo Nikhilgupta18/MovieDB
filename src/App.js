@@ -20,7 +20,7 @@ function App() {
     <Router>
    <NavBar title="MoviesDB"/>
       <Routes>
-            <Route path="/" element={<HomePage options={options}/>}>
+            <Route path="/MovieDB/" element={<HomePage options={options}/>}>
             </Route>
             <Route path="/movieDetail/:id" element={<MovieDetail options={options}/>}>
             </Route>
