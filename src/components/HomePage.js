@@ -80,10 +80,10 @@ export default class HomePage extends Component {
   render() {
     return (
         <div className='container my-5'>
-            <div><h1>{this.titleCase(this.props.url)} {this.props.type === 'movie'? 'Movies' : 'Series'}</h1></div>
-            <div className='row'>
+            <div className='text-center'><h1>{this.titleCase(this.props.url)} {this.props.type === 'movie'? 'Movies' : 'Series'}</h1></div>
+            <div className='row '>
                 {!this.state.loading && this.state.trendingMovies.map((element)=>{
-                    return <div key={element.id} className='col-md-3 col-sm-6'>
+                    return <div key={element.id} className='col-md-3 col-sm-6 d-flex justify-content-evenly'>
                                 <Quotes title={element.title || element.name} description={element.overview.slice(0, 143)} imageUrl={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} movieId={element.id} type={this.props.type}/>
                             </div>
                 })}
