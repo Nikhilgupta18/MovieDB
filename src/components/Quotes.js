@@ -14,11 +14,10 @@ export default class Quotes extends Component {
             <img src={this.props.imageUrl} className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{this.props.title}</h5>
-                <p className="card-text">{this.props.description.length === 200 ? this.props.description + "...." :  this.props.description}</p>
-           
+                <p className="card-text">{this.props.description.length === 143 ? this.props.description + "...." :  this.props.description}</p>           
             </div>
-            <div className='d-flex justify-content-center my-2'>
-                <Link to={`/MovieDB/movieDetail/${this.props.movieId}`} className="btn btn-warning  col-5" >Movie Details</Link>
+            <div className='d-flex justify-content-center my-2'>                
+                <Link to={`/MovieDB/${this.props.type}/${this.props.movieId}`} className="btn btn-warning  col-5" >Details</Link>
             </div>
         </div>
     )

@@ -8,6 +8,7 @@ export default class HomePage extends Component {
       
     constructor(props){
         super(props);
+        this.props.setProgress(10);
         this.state = {
             trendingMovies: this.movies,
             page: 1,
@@ -17,8 +18,8 @@ export default class HomePage extends Component {
     }
 
     async componentDidMount(){
-        this.props.setProgress(0);
-        let data = await fetch(`https://api.themoviedb.org/3/movie/${this.props.url}?language=en-US&page=1`, this.props.options);
+        this.props.setProgress(10);
+        let data = await fetch(`https://api.themoviedb.org/3/${this.props.type}/${this.props.url}?language=en-US&page=1`, this.props.options);
         this.setState({loading: true});
         let parseData  = await data.json();
         console.log(parseData);
@@ -34,7 +35,7 @@ export default class HomePage extends Component {
                     
     }
     handlePrevClick = async ()=>{
-        let data = await fetch(`https://api.themoviedb.org/3/movie/${this.props.url}?language=en-US&page=${this.state.page - 1}`, this.options);
+        let data = await fetch(`https://api.themoviedb.org/3/${this.props.type}/${this.props.url}?language=en-US&page=${this.state.page - 1}`, this.props.options);
         this.props.setProgress(30);
         let parseData  = await data.json();
         this.setState({loading: true});
@@ -49,9 +50,9 @@ export default class HomePage extends Component {
     }
 
     handleNextClick = async ()=>{
-        this.props.setProgress(0);
+        this.props.setProgress(10);
         console.log(this.state.page);
-        let data = await fetch(`https://api.themoviedb.org/3/movie/${this.props.url}?language=en-US&page=${this.state.page + 1}`, this.options);
+        let data = await fetch(`https://api.themoviedb.org/3/${this.props.type}/${this.props.url}?language=en-US&page=${this.state.page + 1}`, this.props.options);
         this.props.setProgress(30);
         this.setState({loading: true});
         let parseData  = await data.json();
@@ -61,17 +62,29 @@ export default class HomePage extends Component {
             loading: false
         })
         console.log(data, parseData,this.state.trendingMovies);
+        console.log(this.state.page);
         this.props.setProgress(100);
 
     }
+
+    titleCase = (str) =>{
+        var splitStr = str.toLowerCase().split(/[ _]/);
+        for (var i = 0; i < splitStr.length; i++) {
+            // You do not need to check if i is larger than splitStr length, as your for does that for you
+            // Assign it back to the array
+            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+        }
+        // Directly return the joined string
+        return splitStr.join(' '); 
+     }
   render() {
     return (
         <div className='container my-5'>
-            <div><h1>Latest Movies</h1></div>
+            <div><h1>{this.titleCase(this.props.url)} {this.props.type === 'movie'? 'Movies' : 'Series'}</h1></div>
             <div className='row'>
                 {!this.state.loading && this.state.trendingMovies.map((element)=>{
                     return <div key={element.id} className='col-md-3 col-sm-6'>
-                                <Quotes title={element.title} description={element.overview.slice(0, 143)} imageUrl={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} movieId={element.id}/>
+                                <Quotes title={element.title || element.name} description={element.overview.slice(0, 143)} imageUrl={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} movieId={element.id} type={this.props.type}/>
                             </div>
                 })}
                 

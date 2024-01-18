@@ -31,11 +31,19 @@ function App() {
         height={4}
       />
       <Routes>
-            <Route path="/MovieDB/" element={<HomePage options={options} setProgress={setProgress} url={'now_playing'}/>}>
+            <Route  path="/MovieDB/" element={<HomePage key="latest" options={options} setProgress={setProgress} type = {'movie'} url={'now_playing'}/>}>
             </Route>
-            <Route path="/MovieDB/upcoming" element={<HomePage options={options} setProgress={setProgress} url={'upcoming'}/>}>
+            <Route  path="/MovieDB/upcoming" element={<HomePage key="upcoming" options={options} setProgress={setProgress} type = {'movie'} url={'upcoming'}/>}>
             </Route>
-            <Route path="/MovieDB/movieDetail/:id" element={<MovieDetail options={options} setProgress={setProgress}/>}>
+            <Route  path="/MovieDB/top_rated" element={<HomePage key="top_rated" options={options} setProgress={setProgress} type = {'movie'} url={'top_rated'}/>}>
+            </Route>
+            <Route  path="/MovieDB/series/popular" element={<HomePage key="tv_popular" options={options} setProgress={setProgress} type = {'tv'} url={'popular'}/>}>
+            </Route>
+            <Route  path="/MovieDB/series/top_rated" element={<HomePage key="tv_top_rated" options={options} setProgress={setProgress} type = {'tv'} url={'top_rated'}/>}>
+            </Route>
+            <Route path="/MovieDB/movie/:id" element={<MovieDetail key="movie_detail" options={options} setProgress={setProgress}/>}>
+            </Route>
+            <Route path="/MovieDB/tv/:id" element={<MovieDetail key="tv_detail" options={options} setProgress={setProgress}/>}>
             </Route>
       </Routes>
     </Router>
