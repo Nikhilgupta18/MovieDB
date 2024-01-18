@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react'
 import HomePage from './components/HomePage';
 import MovieDetail from './components/MovieDetail';
 import NavBar from './components/NavBar';
@@ -7,7 +8,12 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
+
+
 function App() {
+  const [progress, setProgress] = useState(0);
+
   let options = {
     method: 'GET',
     headers: {
@@ -19,10 +25,17 @@ function App() {
    <>
     <Router>
    <NavBar title="MoviesDB"/>
+      <LoadingBar
+        color='#f11946'
+        progress={progress}
+        height={4}
+      />
       <Routes>
-            <Route path="/MovieDB/" element={<HomePage options={options}/>}>
+            <Route path="/MovieDB/" element={<HomePage options={options} setProgress={setProgress} url={'now_playing'}/>}>
             </Route>
-            <Route path="/movieDetail/:id" element={<MovieDetail options={options}/>}>
+            <Route path="/MovieDB/upcoming" element={<HomePage options={options} setProgress={setProgress} url={'upcoming'}/>}>
+            </Route>
+            <Route path="/MovieDB/movieDetail/:id" element={<MovieDetail options={options} setProgress={setProgress}/>}>
             </Route>
       </Routes>
     </Router>

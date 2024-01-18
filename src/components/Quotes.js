@@ -5,6 +5,9 @@ export default class Quotes extends Component {
     // handleMovieDetail = async ()=>{
         
     // }
+
+ 
+ 
   render() {
     return (
         <div className="card my-2" style={{width: "20rem", height: "50rem"}}>
@@ -15,7 +18,7 @@ export default class Quotes extends Component {
            
             </div>
             <div className='d-flex justify-content-center my-2'>
-                <Link to={`/movieDetail/${this.props.movieId}`} className="btn btn-warning  col-5" >Movie Details</Link>
+                <Link to={`/MovieDB/movieDetail/${this.props.movieId}`} className="btn btn-warning  col-5" >Movie Details</Link>
             </div>
         </div>
     )
