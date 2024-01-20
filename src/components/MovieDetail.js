@@ -60,19 +60,22 @@ export default class MovieDetail extends Component {
       <div className='container d-flex justify-content-center bg-dark text-white my-5'>
         <div className='my-5 justify-content-center row'>
             <img src={`https://image.tmdb.org/t/p/w500/${this.state.movieDetail.poster_path}`} className="card-img-top rounded-4 border border-warning ms-2 p-0" alt="..." style={{width: "18rem", height:"30rem"}}/>
-            <div className="card-body ms-5 col-md-7 mt-5">
-              <div className='d-flex'>
-                <div className='col-md-5'>
-
+            <div className="card-body m-2 col-md-7 mt-5">
+              <div className='row d-flex text-center'>
+                <div className='col-md-7'>
                   <h1 className="card-title">{this.state.movieDetail.title || this.state.movieDetail.name}</h1>
                   <p className="card-text fst-italic">"{this.state.movieDetail.tagline}"</p>
                 </div>
+                <div className='col-md-5   mt-2 d-flex'>
+
                   {this.state.providers?.flatrate?.slice(0,5).map((element)=>{
-                    return <div className='me-2 ms-2'>
+                    return <div className=''>
                               <img src={`https://image.tmdb.org/t/p/w500/${element.logo_path}`} alt='...' style={{width: "60px", height: "60px"}} className='me-1' data-bs-toggle="tooltip" data-bs-placement="bottom" title={element.provider_name}/>
                               <p className='fs-6 fw-lighter'>{element.provider_name}</p>
                             </div>
                   })}
+
+                </div>
               </div>
                 <p className="card-text mt-5 m-0">Status: {this.state.movieDetail.status}</p>
                 <p className="card-text">Release Date: {this.state.movieDetail.release_date || this.state.movieDetail.first_air_date}</p>
