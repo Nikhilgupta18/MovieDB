@@ -24,14 +24,14 @@ function App() {
   return (
    <>
     <Router>
-   <NavBar title="MoviesDB"/>
+   <NavBar title="MoviesDB" options={options} setProgress={setProgress} />
       <LoadingBar
         color='#f11946'
         progress={progress}
         height={4}
       />
       <Routes>
-            <Route  path="/MovieDB/" element={<HomePage key="latest" options={options} setProgress={setProgress} type = {'movie'} url={'now_playing'}/>}>
+            <Route  path="/MovieDB/" element={<HomePage key="latest" options={options} setProgress={setProgress} type = {'movie'} url={'now_playing'} />}>
             </Route>
             <Route  path="/MovieDB/upcoming" element={<HomePage key="upcoming" options={options} setProgress={setProgress} type = {'movie'} url={'upcoming'}/>}>
             </Route>

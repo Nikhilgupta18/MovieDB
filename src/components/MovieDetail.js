@@ -32,7 +32,7 @@ export default class MovieDetail extends Component {
           this.props.setProgress(60);
           let providersData = await providers.json();
 
-          console.log(castDataParsed);
+          // console.log(castDataParsed);
 
           this.setState({
               movieId : id,

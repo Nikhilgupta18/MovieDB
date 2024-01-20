@@ -1,6 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 export default class NavBar extends Component {
+
+  // constructor(props){
+  //   super(props)
+  //   this.state = {
+  //     searchText: this.props.setSearch("")
+  //   }
+  // }
+
+  // handlesearch = (value) =>{
+  //   this.setState ({
+  //     search : this.props.setSearch(value)
+  //   })
+  // }
+
   render() {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary "  data-bs-theme="dark">
@@ -26,8 +40,6 @@ export default class NavBar extends Component {
               <li className="nav-item">
                 <Link className="nav-link" aria-current="page" to="/MovieDB/series/top_rated">Top Series</Link>
               </li>
-              
-              
               
             </ul>
             
