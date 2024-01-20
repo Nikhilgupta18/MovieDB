@@ -60,7 +60,7 @@ export default class MovieDetail extends Component {
       <div className='container d-flex justify-content-center bg-dark text-white my-5'>
         <div className='my-5 justify-content-center row'>
             <img src={`https://image.tmdb.org/t/p/w500/${this.state.movieDetail.poster_path}`} className="card-img-top rounded-4 border border-warning ms-2 p-0" alt="..." style={{width: "18rem", height:"30rem"}}/>
-            <div className="card-body ms-5 col-md-7">
+            <div className="card-body ms-5 col-md-7 mt-5">
               <div className='d-flex'>
                 <div className='col-md-5'>
 
